@@ -15,7 +15,7 @@ class AddListForm(ModelForm):
 
     class Meta:
         model = List
-        
+        fields = '__all__'
  
         
 class AddItemForm(ModelForm):
@@ -39,6 +39,7 @@ class AddItemForm(ModelForm):
 
     class Meta:
         model = Item
+        fields = '__all__'
         
 
 
@@ -80,4 +81,6 @@ class SearchForm(ModelForm):
                     widget=forms.widgets.TextInput(attrs={'size':35})
                     ) 
 
+    class Meta:
+        fields = '__all__'
 

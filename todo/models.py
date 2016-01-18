@@ -45,14 +45,14 @@ class List(models.Model):
 class Item(models.Model):
     title = models.CharField(max_length=140)
     list = models.ForeignKey(List)
-    created_date = models.DateField(auto_now=True, auto_now_add=True)
+    created_date = models.DateField(auto_now_add=True)
     due_date = models.DateField(blank=True,null=True,)
     completed = models.BooleanField()
     completed_date = models.DateField(blank=True,null=True)
     created_by = models.ForeignKey(User, related_name='created_by')
     assigned_to = models.ForeignKey(User, related_name='todo_assigned_to')
     note = models.TextField(blank=True,null=True)
-    priority = models.PositiveIntegerField(max_length=3)
+    priority = models.PositiveIntegerField()
     
     # Model method: Has due date for an instance of this object passed?
     def overdue_status(self):
@@ -89,4 +89,4 @@ class Comment(models.Model):
         return '%s - %s' % (
                 self.author, 
                 self.date, 
-                )        
+                )
